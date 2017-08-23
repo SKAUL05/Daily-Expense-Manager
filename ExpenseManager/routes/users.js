@@ -7,16 +7,20 @@ const User = require('../models/user');
 
 //Register
 router.post('/register', (req,res,next) => {
+	//logic to add user details
 	let newUser = new User({
-		name: req.body.name,
+		first_name: req.body.first_name,
+        last_name: req.body.last_name,
 		email: req.body.email,
+		dob: req.body.dob,
+		gender: req.body.gender,
+		phone: req.body.phone,
 		username: req.body.username,
 		password: req.body.password
 	});
 
-	User.addUser(newUser, (err,user) => {
-		if(err)
-		{
+	User.addUser(newUser, (err, user) => {
+		if(err) {
 			res.json({success: false, msg:'Failed to register User'});
 		}
 		else
@@ -24,7 +28,6 @@ router.post('/register', (req,res,next) => {
 			res.json({success: true, msg:'User registered'});
 		}
 	})
-
 });
 
 //Authenticate
@@ -68,8 +71,11 @@ router.post('/authenticate', (req,res,next) => {
 });
 
 //Profile
-router.get('/profile',passport.authenticate('jwt', {session:false}), (req,res,next) => {
-	res.json({user: req.user});
+router.get('/profile', (req,res,next) => {
+	//res.send('Fetching the Profile.....');
+	User.find(function(err,profile){
+	 res.json(profile);
+	})
 
 });
 

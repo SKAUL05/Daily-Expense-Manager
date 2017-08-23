@@ -54,5 +54,5 @@ app.get('*', (req, res) => {
 
 // Start Server
 app.listen(port, () => {
-	console.log('Server started on Port '+port);
+	console.log('Server started on Port: '+port);
 });
