@@ -55,7 +55,11 @@ router.post('/authenticate', (req,res,next) => {
 					token: 'JWT '+token,
 					user: {
 						id: user._id,
-						name: user.name,
+						first_name: user.first_name,
+						last_name:user.last_name,
+						dob:user.dob,
+						phone:user.phone,
+						gender:user.gender,
 						username: user.username,
 						email: user.email
 					}
@@ -71,11 +75,9 @@ router.post('/authenticate', (req,res,next) => {
 });
 
 //Profile
-router.get('/profile', (req,res,next) => {
+router.get('/profile',passport.authenticate('jwt', {session:false}), (req,res,next) => {
 	//res.send('Fetching the Profile.....');
-	User.find(function(err,profile){
-	 res.json(profile);
-	})
+	res.json({user: req.user});
 
 });
 
