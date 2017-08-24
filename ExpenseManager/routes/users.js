@@ -4,11 +4,11 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const User = require('../models/user');
+const Transact = require('../models/transact');
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/' })
+
 //Register
-
-
 
 router.post('/register', (req,res,next) => {
 	//logic to add user details
@@ -33,6 +33,33 @@ router.post('/register', (req,res,next) => {
 		}
 	})
 });
+/*
+//Transact Details
+router.post('/transact', (req,res,next) => {
+    //logic to add transacation details
+    let newTransact = new Transact({
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        amount: req.body.amount,
+		nature: req.body.nature,
+		category : req.body.category,
+		date: req.body.date,
+		note: req.body.note
+    });
+
+    Transact.addTransact(newTransact, (err, transact) => {
+        if(err) {
+            res.json({success: false, msg:'Failed to register Transaction'});
+        }
+        else
+        {
+            res.json({success: true, msg:'Transaction Added'});
+        }
+    })
+});
+*/
+
+
 
 //Authenticate
 router.post('/authenticate', (req,res,next) => {
@@ -85,6 +112,10 @@ router.get('/profile',passport.authenticate('jwt', {session:false}), (req,res,ne
 
 });
 
+router.get('/transact', (req,res,next) => {
+    //res.send('Fetching the Profile.....');
+    res.json({transact:req.transact});
 
+});
 
 module.exports = router;

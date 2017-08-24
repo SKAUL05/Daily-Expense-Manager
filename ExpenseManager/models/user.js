@@ -38,6 +38,7 @@ const UserSchema = mongoose.Schema({
 	}
 });
 
+
 const User = module.exports = mongoose.model('User', UserSchema);
 
 module.exports.getUserById = function(id, callback){
@@ -58,6 +59,7 @@ module.exports.addUser = function(newUser, callback){
 		});
 	});
 }
+
 
 module.exports.comparePassword = function(candidatePassword, hash, callback){
 	bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
