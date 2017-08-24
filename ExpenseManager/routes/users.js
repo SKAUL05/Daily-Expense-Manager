@@ -4,8 +4,12 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const User = require('../models/user');
-
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' })
 //Register
+
+
+
 router.post('/register', (req,res,next) => {
 	//logic to add user details
 	let newUser = new User({
