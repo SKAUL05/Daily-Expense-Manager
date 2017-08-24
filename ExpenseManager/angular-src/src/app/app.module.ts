@@ -16,6 +16,7 @@ import {AuthGuard} from './guards/auth.guard'
 import {ValidateService} from './services/validate.service'
 import {AuthService} from './services/auth.service'
 import {FlashMessagesModule} from 'angular2-flash-messages';
+import { TransactionsComponent } from './components/dashboard/transactions/transactions.component';
 const appRoutes: Routes = [
   {path:'', component: HomeComponent},
   {path:'register', component: RegisterComponent},
@@ -32,7 +33,8 @@ const appRoutes: Routes = [
     RegisterComponent,
     HomeComponent,
     DashboardComponent,
-    ProfileComponent
+    ProfileComponent,
+    TransactionsComponent
   ],
   imports: [
     BrowserModule,

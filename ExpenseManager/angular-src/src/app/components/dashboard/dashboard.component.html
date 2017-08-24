@@ -1,2 +1,5 @@
 <h2 class="page-header">Dashboard</h2>
-<p>Welcome to your dashboard</p>
+<div *ngIf="user">
+<p>Welcome to your dashboard <i> <b>{{user.username}}</b> </i></p>
+
+</div>
