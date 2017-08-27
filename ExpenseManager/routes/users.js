@@ -119,6 +119,34 @@ router.delete('/transact/:id',(req, res, next)=>{
     });
 });
 
+//Update Transaction
+
+router.put('/transact/:id', (req, res, next) => {
+    var id = req.params.id;
+    console.log(req.body.first_name);
+    console.log(req.body.last_name);
+    Transact.findOneAndUpdate({ _id: req.params.id }, {
+            $set: {
+                first_name: req.body.first_name,
+                last_name: req.body.last_name,
+				amount: req.body.amount,
+                nature: req.body.nature,
+                category: req.body.category,
+				date: req.body.date,
+                note: req.body.note
+
+            }
+        },
+        function(err, result) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log("successs");
+                res.json(result);
+            }
+        });
+});
+
 
 //Profile
 router.get('/profile',passport.authenticate('jwt', {session:false}), (req,res,next) => {
@@ -127,6 +155,19 @@ router.get('/profile',passport.authenticate('jwt', {session:false}), (req,res,ne
 
 });
 
+router.get('/transact/:id', (req, res, next)=>{
+    var id = req.params.id;
+    console.log(id);
+
+    Transact.findOne({_id: req.params.id}, function(err,doc){
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("successs");
+            res.json(doc);
+        }
+    });
+});
 router.get('/transact1', (req,res,next)=> {
     //res.send('Fetching the Profile.....');
     Transact.find(function (err,transacts) {

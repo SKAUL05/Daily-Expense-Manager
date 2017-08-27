@@ -10,6 +10,17 @@ import {ValidateService} from '../../services/validate.service';
   styleUrls: ['./transactions.component.css']
 })
 export class TransactionsComponent implements OnInit {
+   transactInfo = {
+  _id : String,
+  first_name: String,
+  last_name: String,
+  amount : String,
+  nature : String,
+  category : String,
+  note : String,
+  date : String
+};
+
   user: Object;
    transactions: Array<any>;
   _id: String;
@@ -58,6 +69,40 @@ export class TransactionsComponent implements OnInit {
        }
     });
   }
+
+  update() {
+    console.log(this.transactInfo._id);
+    const transacts = {
+      first_name : this.first_name,
+      last_name : this.last_name,
+      amount: this.amount,
+      nature : this.nature,
+      category : this.category,
+      date : this.date,
+      note : this.note
+    };
+    console.log(transacts.date);
+    this.authService.update(this._id, transacts).subscribe(res => {
+      console.log(res);
+      this.flashMessage.show('Update  success', {cssClass: 'alert-success', timeout: 3000});
+      window.location.reload();
+    });
+
+  }
+   editTransaction(id) {
+     console.log(id);
+     this.authService.editTransact(id).subscribe(res => {
+       console.log('data to be edited is' + res.first_name);
+       this.flashMessage.show('Edit Success', {cssClass: 'alert-success', timeout: 3000});
+       this.transactInfo = res;
+        this.amount = res.amount;
+        this.nature = res.nature;
+        this.date = res.date;
+        this.category = res.category;
+        this.note = res.note;
+        this._id = res._id;
+     });
+   }
 
     addTransaction(user) {
        const transact = {
