@@ -53,8 +53,8 @@
        {{t.note}}
      </div>
      <div class ="col-md-2">
-       <input type= "button"  value="Delete" class="btn btn-danger">
-       <button class="btn btn-warning" >Edit</button>
+       <input type= "button"  value="Delete" (click) = "deleteTransaction(t._id)" value="Delete" class="btn btn-danger">
+       <button class="btn btn-warning" (click) = "editTransaction(t._id)" >Edit</button>
        <br><br>
      </div>
    </div>

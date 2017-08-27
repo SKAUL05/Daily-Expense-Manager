@@ -104,6 +104,21 @@ router.post('/authenticate', (req,res,next) => {
 	});
 
 });
+//Delete Transaction
+router.delete('/transact/:id',(req, res, next)=>{
+    //logic to delete student info
+    Transact.remove({_id: req.params.id}, function(err, result){
+        if(err)
+        {
+            res.json(err);
+        }
+        else
+        {
+            res.json(result);
+        }
+    });
+});
+
 
 //Profile
 router.get('/profile',passport.authenticate('jwt', {session:false}), (req,res,next) => {

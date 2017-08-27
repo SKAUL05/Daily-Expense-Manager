@@ -48,6 +48,10 @@ export class AuthService {
     return this.http.get('http://localhost:3000/users/transact1', {headers: headers})
       .map(res =>res.json());
   }
+  deleteTransact(id) {
+    return this.http.delete('http://localhost:3000/users/transact/' + id)
+      .map(res => res.json());
+  }
 
   storeUserData(token, user){
     localStorage.setItem('id_token', token);
@@ -55,6 +59,7 @@ export class AuthService {
     this.authToken = token;
     this.user = user;
   }
+
 
   loadToken()
   {

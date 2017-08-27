@@ -11,7 +11,8 @@ import {ValidateService} from '../../services/validate.service';
 })
 export class TransactionsComponent implements OnInit {
   user: Object;
-  transactions: Object[];
+   transactions: Array<any>;
+  _id: String;
   first_name: String;
   last_name: String;
   amount: String;
@@ -25,6 +26,7 @@ export class TransactionsComponent implements OnInit {
               private route2: ActivatedRoute,
               private router: Router) { this.refresh();}
   refresh() {
+    this._id = null;
     this.first_name = this.last_name = this.amount = this.nature = this.category  = this.note = this.date = null;
   }
   ngOnInit() {
@@ -42,6 +44,21 @@ export class TransactionsComponent implements OnInit {
          return false;
        });
     }
+
+    deleteTransaction(id: any) {
+      const transactions1 = this.transactions;
+    this.authService.deleteTransact(id).subscribe(data => {
+       if (data.n === 1 ) {
+         for (let i = 0 ; i < transactions1.length ; i++) {
+           if (transactions1[i]._id === id) {
+             transactions1.splice(i, 1);
+             this.flashMessage.show('Delete success', {cssClass: 'alert-success', timeout: 3000});
+           }
+         }
+       }
+    });
+  }
+
     addTransaction(user) {
        const transact = {
          first_name : user.first_name,
