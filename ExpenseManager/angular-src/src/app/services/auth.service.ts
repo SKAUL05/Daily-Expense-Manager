@@ -7,6 +7,7 @@ import {tokenNotExpired} from 'angular2-jwt';
 export class AuthService {
   authToken: any;
   user: any;
+  transact: any;
 
   constructor(private http:Http) { }
 
@@ -15,6 +16,13 @@ export class AuthService {
     headers.append('Content-Type','application/json');
     return this.http.post('http://localhost:3000/users/register', user, {headers: headers})
     .map(res =>res.json());
+  }
+
+  registerTransact(transact) {
+    let headers =new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/users/transact', transact, {headers: headers})
+      .map(res =>res.json());
   }
 
   authenticateUser(user){
@@ -31,6 +39,14 @@ export class AuthService {
     headers.append('Content-Type','application/json');
     return this.http.get('http://localhost:3000/users/profile', {headers: headers})
     .map(res =>res.json());
+  }
+  getTransactions(){
+    let headers =new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.get('http://localhost:3000/users/transact1', {headers: headers})
+      .map(res =>res.json());
   }
 
   storeUserData(token, user){

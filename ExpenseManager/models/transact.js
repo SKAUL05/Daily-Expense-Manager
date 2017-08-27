@@ -38,12 +38,12 @@ const TransactionSchema = mongoose.Schema({
 const Transact = module.exports = mongoose.model('Transact', TransactionSchema);
 
 module.exports.addTransact = function(newTransact, callback){
-    bcrypt.genSalt(10, (err, salt) => {
-        bcrypt.hash(newTransact.first_name, salt, (err, hash) => {
+//    bcrypt.genSalt(10, (err, salt) => {
+  //      bcrypt.hash(newTransact.first_name, salt, (err, hash) => {
 
             newTransact.save(callback);
-        });
-    });
+    //    });
+    //});
 }
 
 module.exports.getTransactById = function(id, callback){

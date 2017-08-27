@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ValidateService} from '../../services/validate.service'
-import {AuthService} from '../../services/auth.service'
+import {ValidateService} from '../../services/validate.service';
+import {AuthService} from '../../services/auth.service';
 import {FlashMessagesService} from 'angular2-flash-messages';
-import {Router} from '@angular/router'
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -41,10 +41,10 @@ export class RegisterComponent implements OnInit {
 
 
 
-  /*if (!this.validateService.validateRegister(user)) {
+  if (!this.validateService.validateRegister(user)) {
     this.flashMessage.show('Please fill in all fields', {cssClass: 'alert-danger', timeout: 3000});
     return false;
-  }*/
+  }
 
 
   if (!this.validateService.validateEmail(user.email)) {

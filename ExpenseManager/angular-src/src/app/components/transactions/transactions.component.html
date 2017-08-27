@@ -1,6 +1,6 @@
 <div  *ngIf="user">
 <h2 class="page-header">Transaction Details</h2>
-<form (submit)="addTransaction()">
+<form (submit)="addTransaction(user)">
    <div class="form-group">
      <label> First Name: </label>
      <input type="text" ng-model="first_name" name="first_name" class="form-control" value={{user.first_name}} disabled>
@@ -29,6 +29,36 @@
     <label> Note:</label>
     <input type="text" [(ngModel)]="note" name="note" class="form-control" >
   </div>
-
+  <input type="submit" class="btn btn-primary" value="Submit">
 </form>
+</div>
+
+<hr>
+<div class="row">
+ <div class="container">
+   <div *ngFor="let t of transactions">
+     <div class = "col-md-2">
+       &#8377;{{t.amount}}
+     </div>
+     <div class = "col-md-2">
+       {{t.nature}}
+     </div>
+     <div class = "col-md-2">
+       {{t.category}}
+     </div>
+     <div class = "col-md-2">
+       {{t.date}}
+     </div>
+     <div class = "col-md-2">
+       {{t.note}}
+     </div>
+     <div class ="col-md-2">
+       <input type= "button"  value="Delete" class="btn btn-danger">
+       <button class="btn btn-warning" >Edit</button>
+       <br><br>
+     </div>
+   </div>
+
+ </div>
+
 </div>

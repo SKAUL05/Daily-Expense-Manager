@@ -33,7 +33,7 @@ router.post('/register', (req,res,next) => {
 		}
 	})
 });
-/*
+
 //Transact Details
 router.post('/transact', (req,res,next) => {
     //logic to add transacation details
@@ -57,7 +57,7 @@ router.post('/transact', (req,res,next) => {
         }
     })
 });
-*/
+
 
 
 
@@ -112,9 +112,11 @@ router.get('/profile',passport.authenticate('jwt', {session:false}), (req,res,ne
 
 });
 
-router.get('/transact', (req,res,next) => {
+router.get('/transact1', (req,res,next)=> {
     //res.send('Fetching the Profile.....');
-    res.json({transact:req.transact});
+    Transact.find(function (err,transacts) {
+		res.json(transacts);
+    });
 
 });
 
