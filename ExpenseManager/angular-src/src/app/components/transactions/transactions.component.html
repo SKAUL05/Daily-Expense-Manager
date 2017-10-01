@@ -1,4 +1,6 @@
-<div  *ngIf="user">
+
+<div class="form-display">
+<div  *ngIf="user" id="disp">
 <h2 class="page-header">Transaction Details</h2>
 <form (submit)="addTransaction(user)">
    <div class="form-group">
@@ -29,8 +31,8 @@
     <label> Note:</label>
     <input type="text" [(ngModel)]="note" name="note" class="form-control" >
   </div>
-  <input type="submit" class="btn btn-primary" value="Submit">
-  <input type="button" class="btn btn-info" (click)="update()" value="Update">
+  <input type="submit" class="btn btn-primary"  id="submit_button" value="Submit">
+  <input type="button" class="btn btn-info" id="update_button"(click)="update()" value="Update" >
 </form>
 </div>
 
@@ -55,11 +57,15 @@
      </div>
      <div class ="col-md-2">
        <input type= "button"  value="Delete" (click) = "deleteTransaction(t._id)" value="Delete" class="btn btn-danger">
-       <button class="btn btn-warning" (click) = "editTransaction(t._id)" >Edit</button>
-       <br><br>
      </div>
+     <div class="col-md-2">
+       <button class="btn btn-warning" (click) = "editTransaction(t._id)" >Edit</button>
+     </div>
+     <br><br>
    </div>
 
  </div>
 
 </div>
+</div>
+

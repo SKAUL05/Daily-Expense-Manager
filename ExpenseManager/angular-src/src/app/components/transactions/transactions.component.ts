@@ -39,6 +39,7 @@ export class TransactionsComponent implements OnInit {
   refresh() {
     this._id = null;
     this.first_name = this.last_name = this.amount = this.nature = this.category  = this.note = this.date = null;
+   // document.getElementById('update_button').style.display = 'none';
   }
   ngOnInit() {
     this.authService.getProfile().subscribe(profile => {
@@ -102,6 +103,8 @@ export class TransactionsComponent implements OnInit {
         this.note = res.note;
         this._id = res._id;
      });
+     document.getElementById('update_button').style.display = 'inline';
+     document.getElementById('submit_button').style.display = 'none';
    }
 
     addTransaction(user) {

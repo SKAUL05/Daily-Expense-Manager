@@ -1,0 +1,26 @@
+.form-control
+{
+  width:40%;
+  height:20px;
+}
+#disp
+{
+  width:50%;
+}
+.row
+{
+  margin-top: -500px;
+  margin-left: 350px;
+}
+.col-md-2
+{
+  width:110px;
+}
+.form-display
+{
+  display: block;
+}
+#update_button
+{
+  display: none;
+}
