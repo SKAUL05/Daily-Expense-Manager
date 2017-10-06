@@ -24,7 +24,12 @@ export class AuthService {
     return this.http.post('http://localhost:3000/users/transact', transact, {headers: headers})
       .map(res =>res.json());
   }
-
+  registerAccount(account) {
+    let headers =new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/users/account', account, {headers: headers})
+      .map(res =>res.json());
+  }
   authenticateUser(user){
     let headers =new Headers();
     headers.append('Content-Type','application/json');

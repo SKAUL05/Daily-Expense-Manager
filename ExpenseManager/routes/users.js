@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const User = require('../models/user');
 const Transact = require('../models/transact');
+const Account = require('../models/accounts');
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/' })
 
@@ -57,6 +58,31 @@ router.post('/transact', (req,res,next) => {
         }
     })
 });
+
+//Account Details
+
+router.post('/account', (req,res,next) => {
+    //logic to add account details
+    let newAccount = new Account({
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        acc_no: req.body.acc_no,
+        acc_type: req.body.acc_type
+    });
+
+    Account.addAccount(newAccount, (err, account) => {
+        if(err) {
+            res.json({success: false, msg:'Failed to register Account'});
+        }
+        else
+        {
+            res.json({success: true, msg:'Account Added'});
+        }
+    })
+});
+
+
+
 
 
 
@@ -168,6 +194,14 @@ router.get('/transact/:id', (req, res, next)=>{
         }
     });
 });
+router.get('/account1', (req,res,next)=> {
+    //res.send('Fetching the Profile.....');
+    Account.find(function (err,account) {
+        res.json(account);
+    });
+
+});
+
 router.get('/transact1', (req,res,next)=> {
     //res.send('Fetching the Profile.....');
     Transact.find(function (err,transacts) {
@@ -175,5 +209,5 @@ router.get('/transact1', (req,res,next)=> {
     });
 
 });
-
+router.get('/account1')
 module.exports = router;
