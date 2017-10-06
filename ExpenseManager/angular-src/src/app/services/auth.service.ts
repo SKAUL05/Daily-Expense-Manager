@@ -53,8 +53,20 @@ export class AuthService {
     return this.http.get('http://localhost:3000/users/transact1', {headers: headers})
       .map(res =>res.json());
   }
+  getAccounts(){
+    let headers =new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.get('http://localhost:3000/users/account1', {headers: headers})
+      .map(res =>res.json());
+  }
   deleteTransact(id) {
     return this.http.delete('http://localhost:3000/users/transact/' + id)
+      .map(res => res.json());
+  }
+  deleteAccountss(id) {
+    return this.http.delete('http://localhost:3000/users/account/' + id)
       .map(res => res.json());
   }
   editTransact(id) {

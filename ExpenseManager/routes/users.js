@@ -145,6 +145,21 @@ router.delete('/transact/:id',(req, res, next)=>{
     });
 });
 
+router.delete('/account/:id',(req, res, next)=>{
+    //logic to delete student info
+    Account.remove({_id: req.params.id}, function(err, result){
+        if(err)
+        {
+            res.json(err);
+        }
+        else
+        {
+            res.json(result);
+        }
+    });
+});
+
+
 //Update Transaction
 
 router.put('/transact/:id', (req, res, next) => {

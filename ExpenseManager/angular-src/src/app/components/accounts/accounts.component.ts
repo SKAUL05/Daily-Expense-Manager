@@ -43,8 +43,27 @@ export class AccountsComponent implements OnInit {
         console.log(err);
         return false;
       });
+    this.authService.getAccounts().subscribe(account => {
+      this.accounts = account;
+    }, err => {
+      console.log(err);
+      return false;
+    });
   }
 
+  deleteAccount(id: any) {
+    const accounts1 = this.accounts;
+    this.authService.deleteAccountss(id).subscribe(data => {
+      if (data.n === 1 ) {
+        for (let i = 0 ; i < accounts1.length ; i++) {
+          if (accounts1[i]._id === id) {
+            accounts1.splice(i, 1);
+            this.flashMessage.show('Delete success', {cssClass: 'alert-success', timeout: 3000});
+          }
+        }
+      }
+    });
+  }
     addAccount(user) {
       const account = {
         first_name : user.first_name,

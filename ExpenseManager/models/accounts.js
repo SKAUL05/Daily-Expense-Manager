@@ -4,7 +4,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const config = require('../config/database');
-
+var uniqueValidator = require('mongoose-unique-validator');
 const AccountSchema = mongoose.Schema({
     first_name:{
         type:String,
@@ -16,7 +16,8 @@ const AccountSchema = mongoose.Schema({
     },
    acc_no:{
         type: String,
-        required: true
+        required: true,
+       unique:true
     },
     acc_type:{
         type: String,

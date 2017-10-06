@@ -23,3 +23,24 @@
     </form>
   </div>
 </div>
+
+<hr>
+<div class="row">
+  <div class="container">
+    <div *ngFor="let t of accounts">
+      <div class = "col-md-2">
+        {{t.acc_no}}
+      </div>
+      <div class = "col-md-2">
+        {{t.acc_type}}
+      </div>
+      <div class ="col-md-2">
+        <input type= "button"  value="Delete" (click) = "deleteAccount(t._id)" value="Delete" class="btn btn-danger">
+      </div>
+
+      <br><br>
+    </div>
+
+  </div>
+
+</div>
