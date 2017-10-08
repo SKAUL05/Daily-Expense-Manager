@@ -19,6 +19,10 @@
         <label> Account Type:</label>
         <input type="text" [(ngModel)]="acc_type" name="acc_type" class="form-control" >
       </div>
+      <div class="form-group">
+        <label> Balance:</label>
+        <input type="text" [(ngModel)]="balance" name="balance" class="form-control" >
+      </div>
       <input type="submit" class="btn btn-primary"  id="submit_button" value="Submit">
     </form>
   </div>
@@ -33,6 +37,9 @@
       </div>
       <div class = "col-md-2">
         {{t.acc_type}}
+      </div>
+      <div class = "col-md-2">
+        {{t.balance}}
       </div>
       <div class ="col-md-2">
         <input type= "button"  value="Delete" (click) = "deleteAccount(t._id)" value="Delete" class="btn btn-danger">

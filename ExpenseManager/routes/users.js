@@ -67,7 +67,8 @@ router.post('/account', (req,res,next) => {
         first_name: req.body.first_name,
         last_name: req.body.last_name,
         acc_no: req.body.acc_no,
-        acc_type: req.body.acc_type
+        acc_type: req.body.acc_type,
+        balance:req.body.balance
     });
 
     Account.addAccount(newAccount, (err, account) => {

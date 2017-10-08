@@ -16,7 +16,8 @@ export class AccountsComponent implements OnInit {
     first_name: String,
     last_name: String,
     acc_no : String,
-    acc_type : String
+    acc_type : String,
+    balance: Number
     };
   user: Object;
   accounts: Array<any>;
@@ -25,6 +26,7 @@ export class AccountsComponent implements OnInit {
   last_name: String;
   acc_no: String;
   acc_type: String;
+  balance: Number;
   constructor(private validateService: ValidateService,
               private flashMessage: FlashMessagesService,
               private authService: AuthService,
@@ -69,7 +71,8 @@ export class AccountsComponent implements OnInit {
         first_name : user.first_name,
         last_name : user.last_name,
         acc_no : this.acc_no,
-        acc_type: this.acc_type
+        acc_type: this.acc_type,
+        balance: this.balance
       };
       /*if (!this.validateService.validateRegister(transact)) {
        this.flashMessage.show('Please fill in all fields', {cssClass: 'alert-danger', timeout: 3000});

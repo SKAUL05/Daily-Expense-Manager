@@ -22,6 +22,10 @@ const AccountSchema = mongoose.Schema({
     acc_type:{
         type: String,
         required: true
+    },
+    balance:{
+        type:Number,
+        required:true
     }
 });
 
