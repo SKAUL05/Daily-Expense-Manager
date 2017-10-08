@@ -45,7 +45,7 @@ router.post('/transact', (req,res,next) => {
 		nature: req.body.nature,
 		category : req.body.category,
 		date: req.body.date,
-		note: req.body.note
+		acc_no: req.body.acc_no
     });
 
     Transact.addTransact(newTransact, (err, transact) => {

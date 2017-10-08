@@ -30,7 +30,7 @@ const TransactionSchema = mongoose.Schema({
         type:String,
         required: true
     },
-    note: {
+    acc_no: {
         type: String
     }
 });

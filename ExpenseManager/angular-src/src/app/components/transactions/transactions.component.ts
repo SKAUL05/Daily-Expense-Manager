@@ -17,11 +17,12 @@ export class TransactionsComponent implements OnInit {
   amount : String,
   nature : String,
   category : String,
-  note : String,
+  acc_no : String,
   date : String
 };
 
   user: Object;
+  balances: Object;
    transactions: Array<any>;
   _id: String;
   first_name: String;
@@ -30,7 +31,7 @@ export class TransactionsComponent implements OnInit {
   nature: String;
   category: String;
   date: String;
-  note: String;
+  acc_no: String;
   constructor(private validateService: ValidateService,
               private flashMessage: FlashMessagesService,
               private authService: AuthService,
@@ -38,7 +39,7 @@ export class TransactionsComponent implements OnInit {
               private router: Router) { this.refresh();}
   refresh() {
     this._id = null;
-    this.first_name = this.last_name = this.amount = this.nature = this.category  = this.note = this.date = null;
+    this.first_name = this.last_name = this.amount = this.nature = this.category  = this.acc_no = this.date = null;
    // document.getElementById('update_button').style.display = 'none';
   }
   ngOnInit() {
@@ -80,7 +81,7 @@ export class TransactionsComponent implements OnInit {
       nature : this.nature,
       category : this.category,
       date : this.date,
-      note : this.note
+      acc_no : this.acc_no
     };
     console.log(transacts.date);
     this.authService.update(this._id, transacts).subscribe(res => {
@@ -100,7 +101,7 @@ export class TransactionsComponent implements OnInit {
         this.nature = res.nature;
         this.date = res.date;
         this.category = res.category;
-        this.note = res.note;
+        this.acc_no = res.acc_no;
         this._id = res._id;
      });
      document.getElementById('update_button').style.display = 'inline';
@@ -115,7 +116,7 @@ export class TransactionsComponent implements OnInit {
          nature : this.nature,
          category : this.category,
          date : this.date,
-         note : this.note
+         acc_no : this.acc_no
        };
       /*if (!this.validateService.validateRegister(transact)) {
         this.flashMessage.show('Please fill in all fields', {cssClass: 'alert-danger', timeout: 3000});

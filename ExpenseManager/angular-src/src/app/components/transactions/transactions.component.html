@@ -1,6 +1,6 @@
 
 <div class="form-display">
-<div  *ngIf="user" id="disp">
+  <div  *ngIf="user" id="disp">
 <h2 class="page-header">Transaction Details</h2>
 <form (submit)="addTransaction(user)">
    <div class="form-group">
@@ -28,14 +28,13 @@
     <input type="date" [(ngModel)]="date" name="date" class="form-control" >
   </div>
   <div class="form-group">
-    <label> Note:</label>
-    <input type="text" [(ngModel)]="note" name="note" class="form-control" >
+    <label> Account Number:</label>
+    <input type="number" [(ngModel)]="acc_no" name="note" class="form-control" >
   </div>
   <input type="submit" class="btn btn-primary"  id="submit_button" value="Submit">
   <input type="button" class="btn btn-info" id="update_button"(click)="update()" value="Update" >
 </form>
 </div>
-
 <hr>
 <div class="row">
  <div class="container">
@@ -53,7 +52,7 @@
        {{t.date}}
      </div>
      <div class = "col-md-2">
-       {{t.note}}
+       {{t.acc_no}}
      </div>
      <div class ="col-md-2">
        <input type= "button"  value="Delete" (click) = "deleteTransaction(t._id)" value="Delete" class="btn btn-danger">

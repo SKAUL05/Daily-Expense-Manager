@@ -34,7 +34,7 @@ export class AccountsComponent implements OnInit {
               private router: Router) { }
   refresh() {
     this._id = null;
-    this.first_name = this.last_name = this.acc_no = this.acc_type = null;
+    this.first_name = this.last_name = this.acc_no = this.acc_type = this.balance = null;
     // document.getElementById('update_button').style.display = 'none';
   }
   ngOnInit() {
