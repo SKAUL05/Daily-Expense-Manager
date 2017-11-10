@@ -15,7 +15,7 @@ export class AccountsComponent implements OnInit {
     _id : String,
     first_name: String,
     last_name: String,
-    acc_no : String,
+    acc_no : Number,
     acc_type : String,
     balance: Number
     };
@@ -24,9 +24,9 @@ export class AccountsComponent implements OnInit {
   _id: String;
   first_name: String;
   last_name: String;
-  acc_no: String;
+  acc_no: Number;
   acc_type: String;
-  balance: Number;
+  balance: number;
   constructor(private validateService: ValidateService,
               private flashMessage: FlashMessagesService,
               private authService: AuthService,

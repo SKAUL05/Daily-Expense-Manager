@@ -14,24 +14,25 @@ export class TransactionsComponent implements OnInit {
   _id : String,
   first_name: String,
   last_name: String,
-  amount : String,
+  amount : Number,
   nature : String,
   category : String,
-  acc_no : String,
+  acc_no : Number,
   date : String
 };
 
   user: Object;
   balances: Object;
    transactions: Array<any>;
+   accounts: Array<any>;
   _id: String;
   first_name: String;
   last_name: String;
-  amount: String;
+  amount: number;
   nature: String;
   category: String;
   date: String;
-  acc_no: String;
+  acc_no: Number;
   transcs: Array<any>;
   constructor(private validateService: ValidateService,
               private flashMessage: FlashMessagesService,
@@ -42,8 +43,7 @@ export class TransactionsComponent implements OnInit {
     this._id = null;
     this.first_name = this.last_name = this.amount = this.nature = this.category  = this.acc_no = this.date = null;
    // document.getElementById('update_button').style.display = 'none';
-
-
+console.log('Hiii');
   }
   ngOnInit() {
     this.authService.getProfile().subscribe(profile => {
@@ -59,6 +59,12 @@ export class TransactionsComponent implements OnInit {
          console.log(err);
          return false;
        });
+    this.authService.getAccounts().subscribe(transacts => {
+      this.accounts = transacts;
+    }, err => {
+      console.log(err);
+      return false;
+    });
     }
 
     deleteTransaction(id: any) {
@@ -128,22 +134,67 @@ export class TransactionsComponent implements OnInit {
       this.authService.registerTransact(transact).subscribe(data => {
         if (data.success) {
           this.flashMessage.show('Transaction Added', {cssClass: 'alert-success', timeout: 3000});
-           this.refresh();
-          window.location.reload();
+           //this.refresh();
+          // window.location.reload();
+          this.addx(user);
         } else {
           this.flashMessage.show('Something GOING Wrong', {cssClass: 'alert-danger', timeout: 3000});
         }
       });
-      let transacs1: string [];
-      transacs1 = [''];
+    }
+    addx(user) {
+     /* const map = new Map<number, number>();
       const transacd = this.transactions;
       for (let i = 0; i < transacd.length; i++) {
-        transacs1[i] = transacd[i][7];
+        map.set(transacd[i].acc_no, transacd[i].amount);
       }
+      console.log('HIIIIIIIIIIIIIIIIIIIII');
+      map.forEach((value: number, key: number) => {
+        console.log(key, value);
+      });
+     */
 
-      for (let i = 0; i < transacs1.length; i++) {
-        console.log(transacs1[i]);
+      const maps = this.accounts;
+      console.log(this.acc_no);
+      for (let i = 0; i < maps.length; i++) {
+        console.log(maps[i].acc_no);
+          if (maps[i].acc_no == this.acc_no) {
+            console.log('HIIIIIIIX');
+            const x: number = this.amount;
+            maps[i].balance = maps[i].balance - x;
+            const accounts1 = this.accounts;
+            this.authService.deleteAccountss(maps[i]._id).subscribe(data => {
+              if (data.n === 1 ) {
+                for (let i = 0 ; i < accounts1.length ; i++) {
+                  if (accounts1[i]._id == maps[i]._id) {
+                    accounts1.splice(i, 1);
+                   this.flashMessage.show('Delete success', {cssClass: 'alert-success', timeout: 3000});
+                  }
+                }
+              }
+            });
+            console.log(maps[i].acc_no);
+            const a = {
+              first_name: user.first_name,
+              last_name: user.last_name,
+              acc_no: maps[i].acc_no,
+              acc_type: maps[i].acc_type,
+              balance: maps[i].balance,
+            };
+            this.authService.registerAccount(a).subscribe(data => {
+              if (data.success) {
+                this.flashMessage.show('Account Added', {cssClass: 'alert-success', timeout: 3000});
+                this.refresh();
+                window.location.reload();
+              } else {
+                this.flashMessage.show('Something GOING Wrong', {cssClass: 'alert-danger', timeout: 3000});
+              }
+            });
+            break;
+          }
       }
-    }
-
+      for (let i = 0; i < maps.length; i++) {
+       console.log(maps[i].balance);
+      }
+}
 }
