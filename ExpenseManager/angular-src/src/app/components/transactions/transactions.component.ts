@@ -69,10 +69,52 @@ console.log('Hiii');
 
     deleteTransaction(id: any) {
       const transactions1 = this.transactions;
+      const maps = this.accounts;
     this.authService.deleteTransact(id).subscribe(data => {
        if (data.n === 1 ) {
          for (let i = 0 ; i < transactions1.length ; i++) {
            if (transactions1[i]._id === id) {
+             for (let j = 0; j < maps.length; j++) {
+               if (maps[j].acc_no == transactions1[i].acc_no) {
+                 const x: number = transactions1[i].amount;
+                 const y: number = maps[j].balance;
+                  let z = y;
+                 for (let m = 0; m < x; m++ ) {
+                   z++;
+                 }
+                 console.log(z);
+                 maps[j].balance = z;
+                 console.log(maps[j].balance);
+                 const accounts1 = this.accounts;
+                 this.authService.deleteAccountss(maps[j]._id).subscribe(datas => {
+                   if (datas.n === 1 ) {
+                     for (let k = 0 ; k < accounts1.length ; k++) {
+                       if (accounts1[k]._id == maps[k]._id) {
+                         accounts1.splice(k, 1);
+                         this.flashMessage.show('Delete success', {cssClass: 'alert-success', timeout: 3000});
+                       }
+                     }
+                   }
+                 });
+                 const a = {
+                   first_name: transactions1[i].first_name,
+                   last_name: transactions1[i].last_name,
+                   acc_no: maps[j].acc_no,
+                   acc_type: maps[j].acc_type,
+                   balance: maps[j].balance,
+                 };
+                 this.authService.registerAccount(a).subscribe(datax => {
+                   if (datax.success) {
+                     this.flashMessage.show('Account Added', {cssClass: 'alert-success', timeout: 3000});
+                     this.refresh();
+                     window.location.reload();
+                   } else {
+                     this.flashMessage.show('Something GOING Wrong', {cssClass: 'alert-danger', timeout: 3000});
+                   }
+                 });
+                 break;
+               }
+             }
              transactions1.splice(i, 1);
              this.flashMessage.show('Delete success', {cssClass: 'alert-success', timeout: 3000});
            }
@@ -134,7 +176,7 @@ console.log('Hiii');
       this.authService.registerTransact(transact).subscribe(data => {
         if (data.success) {
           this.flashMessage.show('Transaction Added', {cssClass: 'alert-success', timeout: 3000});
-           //this.refresh();
+           // this.refresh();
           // window.location.reload();
           this.addx(user);
         } else {
