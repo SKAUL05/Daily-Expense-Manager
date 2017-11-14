@@ -291,14 +291,11 @@ upd(user)
         if (maps[i].acc_no == this.acc_no) {
           console.log('HIIIIIIIX');
           const x: number = this.amount;
-          console.log(old_bal+"   "+maps[i].balance+"   "+x);
-          if(x>old_bal)
-          {
-            maps[i].balance = maps[i].balance - (x-old_bal);
-          }
-          else if(x<old_bal)
-          {
-            maps[i].balance = maps[i].balance + (old_bal-x);
+          console.log(old_bal  + '   ' + maps[i].balance + '   ' + x);
+          if (x > old_bal) {
+            maps[i].balance = maps[i].balance - (x - old_bal);
+          } else if (x < old_bal) {
+            maps[i].balance = maps[i].balance + (old_bal - x);
           }
           const accounts1 = this.accounts;
           this.authService.deleteAccountss(maps[i]._id).subscribe(data => {
@@ -323,7 +320,7 @@ upd(user)
             if (data.success) {
               this.flashMessage.show('Account Added', {cssClass: 'alert-success', timeout: 3000});
               this.refresh();
-              //window.location.reload();
+              window.location.reload();
             } else {
               this.flashMessage.show('Something GOING Wrong', {cssClass: 'alert-danger', timeout: 3000});
             }
