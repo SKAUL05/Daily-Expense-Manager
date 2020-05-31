@@ -14,26 +14,26 @@ export class AuthService {
   registerUser(user){
     let headers =new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post('http://localhost:3000/users/register', user, {headers: headers})
+    return this.http.post('/users/register', user, {headers: headers})
     .map(res =>res.json());
   }
 
   registerTransact(transact) {
     let headers =new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post('http://localhost:3000/users/transact', transact, {headers: headers})
+    return this.http.post('/users/transact', transact, {headers: headers})
       .map(res =>res.json());
   }
   registerAccount(account) {
     let headers =new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post('http://localhost:3000/users/account', account, {headers: headers})
+    return this.http.post('/users/account', account, {headers: headers})
       .map(res =>res.json());
   }
   authenticateUser(user){
     let headers =new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post('http://localhost:3000/users/authenticate', user, {headers: headers})
+    return this.http.post('/users/authenticate', user, {headers: headers})
     .map(res =>res.json());
   }
 
@@ -42,7 +42,7 @@ export class AuthService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type','application/json');
-    return this.http.get('http://localhost:3000/users/profile', {headers: headers})
+    return this.http.get('/users/profile', {headers: headers})
     .map(res =>res.json());
   }
   getTransactions(){
@@ -50,7 +50,7 @@ export class AuthService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type','application/json');
-    return this.http.get('http://localhost:3000/users/transact1', {headers: headers})
+    return this.http.get('/users/transact1', {headers: headers})
       .map(res =>res.json());
   }
   getAccounts(){
@@ -58,15 +58,15 @@ export class AuthService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type','application/json');
-    return this.http.get('http://localhost:3000/users/account1', {headers: headers})
+    return this.http.get('/users/account1', {headers: headers})
       .map(res =>res.json());
   }
   deleteTransact(id) {
-    return this.http.delete('http://localhost:3000/users/transact/' + id)
+    return this.http.delete('/users/transact/' + id)
       .map(res => res.json());
   }
   deleteAccountss(id) {
-    return this.http.delete('http://localhost:3000/users/account/' + id)
+    return this.http.delete('/users/account/' + id)
       .map(res => res.json());
   }
   editTransact(id) {
@@ -74,7 +74,7 @@ export class AuthService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/users/transact/' + id)
+    return this.http.get('/users/transact/' + id)
       .map(res => res.json());
   }
   update(id, upDatedContact) {
@@ -83,7 +83,7 @@ export class AuthService {
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
     console.log('in update' + id);
-    return this.http.put('http://localhost:3000/users/transact/' + id, upDatedContact, headers).map(res => res.json());
+    return this.http.put('/users/transact/' + id, upDatedContact, headers).map(res => res.json());
   }
 
 

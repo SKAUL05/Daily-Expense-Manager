@@ -1157,25 +1157,25 @@ var AuthService = (function () {
     AuthService.prototype.registerUser = function (user) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:3000/users/register', user, { headers: headers })
+        return this.http.post('/users/register', user, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.registerTransact = function (transact) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:3000/users/transact', transact, { headers: headers })
+        return this.http.post('/users/transact', transact, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.registerAccount = function (account) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:3000/users/account', account, { headers: headers })
+        return this.http.post('/users/account', account, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.authenticateUser = function (user) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:3000/users/authenticate', user, { headers: headers })
+        return this.http.post('/users/authenticate', user, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.getProfile = function () {
@@ -1183,7 +1183,7 @@ var AuthService = (function () {
         this.loadToken();
         headers.append('Authorization', this.authToken);
         headers.append('Content-Type', 'application/json');
-        return this.http.get('http://localhost:3000/users/profile', { headers: headers })
+        return this.http.get('/users/profile', { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.getTransactions = function () {
@@ -1191,7 +1191,7 @@ var AuthService = (function () {
         this.loadToken();
         headers.append('Authorization', this.authToken);
         headers.append('Content-Type', 'application/json');
-        return this.http.get('http://localhost:3000/users/transact1', { headers: headers })
+        return this.http.get('/users/transact1', { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.getAccounts = function () {
@@ -1199,15 +1199,15 @@ var AuthService = (function () {
         this.loadToken();
         headers.append('Authorization', this.authToken);
         headers.append('Content-Type', 'application/json');
-        return this.http.get('http://localhost:3000/users/account1', { headers: headers })
+        return this.http.get('/users/account1', { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.deleteTransact = function (id) {
-        return this.http.delete('http://localhost:3000/users/transact/' + id)
+        return this.http.delete('/users/transact/' + id)
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.deleteAccountss = function (id) {
-        return this.http.delete('http://localhost:3000/users/account/' + id)
+        return this.http.delete('/users/account/' + id)
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.editTransact = function (id) {
@@ -1215,7 +1215,7 @@ var AuthService = (function () {
         this.loadToken();
         headers.append('Authorization', this.authToken);
         headers.append('Content-Type', 'application/json');
-        return this.http.get('http://localhost:3000/users/transact/' + id)
+        return this.http.get('/users/transact/' + id)
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.update = function (id, upDatedContact) {
@@ -1224,7 +1224,7 @@ var AuthService = (function () {
         headers.append('Authorization', this.authToken);
         headers.append('Content-Type', 'application/json');
         console.log('in update' + id);
-        return this.http.put('http://localhost:3000/users/transact/' + id, upDatedContact, headers).map(function (res) { return res.json(); });
+        return this.http.put('/users/transact/' + id, upDatedContact, headers).map(function (res) { return res.json(); });
     };
     AuthService.prototype.storeUserData = function (token, user) {
         localStorage.setItem('id_token', token);
