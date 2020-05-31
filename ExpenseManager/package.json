@@ -4,18 +4,23 @@
   "description": "Expense Manager using Mean",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app"
+    "ng": "ng",
+    "heroku-postbuild": "cd angular-src/ && npm install && cd .. && npm install",
+    "start": "node app.js",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
   },
-  "dependencies":{
-  	"express":"*",
-  	"mongoose":"*",
-  	"bcryptjs":"*",
-  	"cors":"*",
-  	"jsonwebtoken":"*",
-  	"body-parser":"*",
-  	"passport":"*",
-  	"passport-jwt":"*"
+  "dependencies": {
+    "express": "*",
+    "mongoose": "*",
+    "bcryptjs": "*",
+    "cors": "*",
+    "jsonwebtoken": "*",
+    "body-parser": "*",
+    "passport": "*",
+    "passport-jwt": "*"
   },
   "author": "",
   "license": "ISC"
