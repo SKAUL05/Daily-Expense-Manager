@@ -22,7 +22,7 @@
     "body-parser": "*",
     "passport": "*",
     "passport-jwt": "*",
-    "mongoose-unique-validator":"*"
+    "mongoose-unique-validator": "*"
   },
   "author": "",
   "license": "ISC",
