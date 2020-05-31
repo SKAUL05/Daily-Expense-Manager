@@ -14,15 +14,16 @@
   },
   "dependencies": {
     "bcryptjs": "*",
+    "body-parser": "*",
     "cors": "^2.8.3",
     "express": "^4.15.3",
-    "mongoose": "^5.9.16",
     "express-session": "^1.5.0",
     "jsonwebtoken": "*",
-    "body-parser": "*",
+    "mongoose": "^5.9.16",
+    "mongoose-unique-validator": "*",
+    "multer": "^1.4.2",
     "passport": "*",
-    "passport-jwt": "*",
-    "mongoose-unique-validator": "*"
+    "passport-jwt": "*"
   },
   "author": "",
   "license": "ISC",
