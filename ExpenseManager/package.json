@@ -21,7 +21,8 @@
     "jsonwebtoken": "*",
     "body-parser": "*",
     "passport": "*",
-    "passport-jwt": "*"
+    "passport-jwt": "*",
+    "mongoose-unique-validator":"*"
   },
   "author": "",
   "license": "ISC",
