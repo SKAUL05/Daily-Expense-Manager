@@ -13,15 +13,17 @@
     "e2e": "ng e2e"
   },
   "dependencies": {
-    "express": "*",
-    "mongoose": "*",
     "bcryptjs": "*",
-    "cors": "*",
+    "cors": "^2.8.3",
+    "express": "^4.15.3",
+    "mongoose": "^5.9.16",
+    "express-session": "^1.5.0",
     "jsonwebtoken": "*",
     "body-parser": "*",
     "passport": "*",
     "passport-jwt": "*"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {}
 }
