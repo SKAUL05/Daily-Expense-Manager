@@ -34,11 +34,11 @@ cd ExpenseManager/angular-src && ng serve
 
 
 ## Author
-👤 **Sarath Kaul** <br>
-[![GitHub followers](https://img.shields.io/github/followers/SKAUL05?style=social)(https://github.com/SKAUL05)] [![LinkedIn](https://img.shields.io/static/v1.svg?label=connect&message=@skaul05&color=success&logo=linkedin&style=flat&logoColor=white&colorA=blue)](https://www.linkedin.com/in/skaul05/) [![GMAIL](https://img.shields.io/static/v1.svg?label=send&message=kaul.sarath@gmail.com&color=red&logo=gmail&style=social)](mailto:kaul.sarath@gmail.com?subject=Hello)
+👤 **[Sarath Kaul](https://github.com/SKAUL05)** <br>
+![GitHub followers](https://img.shields.io/github/followers/SKAUL05?style=social) [![LinkedIn](https://img.shields.io/static/v1.svg?label=connect&message=@skaul05&color=success&logo=linkedin&style=flat&logoColor=white&colorA=blue)](https://www.linkedin.com/in/skaul05/) [![GMAIL](https://img.shields.io/static/v1.svg?label=send&message=kaul.sarath@gmail.com&color=red&logo=gmail&style=social)](mailto:kaul.sarath@gmail.com?subject=Hello)
 
-👤 **Rajat Singhal** <br>
-[![Github](https://img.shields.io/github/followers/rajat188?style=social)(https://github.com/rajat188)]
+👤 **[Rajat Singhal](https://github.com/rajat188)** <br>
+![Github](https://img.shields.io/github/followers/rajat188?style=social)
 
 ## 🤝 Contributing
 
